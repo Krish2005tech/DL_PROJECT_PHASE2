@@ -191,43 +191,6 @@ Outputs are saved to `results/*.json`, and trained weights can be saved as `mode
 
 ---
 
-## 7) Inference
-
-### Standard Inference
-
-```bash
-python inference.py
-```
-
-### Visual Inference (saves output image)
-
-```bash
-python visual_inference.py
-```
-
-`visual_inference.py`:
-- Loads `model.pth`
-- Runs prediction on a test image
-- Saves `inference_result.png`
-
----
-
-## 8) Benchmarking
-
-Use stress scripts to compare VRAM behavior of ViT vs Vim (and Quad-ViM in `stress2.py`).
-
-```bash
-python stress_test.py
-# or
-python stress2.py
-```
-
-### What it measures
-
-- GPU memory allocation across increasing resolutions (`224`, `512`, `1024`, `2048`)
-- Relative memory savings for linear-complexity models
-- Failure behavior (e.g., OOM in ViT high-res settings)
-
 ### Expected Output Format
 
 ```text
@@ -244,13 +207,13 @@ Res        | ViT (GB)    | Vim (GB)    | QuadViM (GB)  | Saving %
 
 ### Sample Logged Results (`results/*.json`)
 
-| Experiment | Model | Accuracy | Time (s) | Notes |
+| Experiment | Model  | Time (s) | Notes |
 |---|---|---:|---:|---|
-| `vim.json` | Vim | 0.1013 | 941.20 | Baseline run |
-| `quad_vim.json` | Quad-ViM | 0.0780 | 955.88 | Quad scan variant |
-| `vit.json` | ViT | 0.0893 | 952.80 | ViT baseline |
-| `vim_highres.json` | Vim | 0.0964 | 1153.42 | High-res run |
-| `vit_highres_log.json` | ViT | 0.0000 | 2.04 | `OOM_CRASHED` |
+| `vim.json` | Vim  | 941.20 | Baseline run |
+| `quad_vim.json` | Quad-ViM | 955.88 | Quad scan variant |
+| `vit.json` | ViT  | 952.80 | ViT baseline |
+| `vim_highres.json` | Vim | 1153.42 | High-res run |
+| `vit_highres_log.json` | ViT | 2.04 | `OOM_CRASHED` |
 
 ### Interpretation
 
